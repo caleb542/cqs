@@ -1,0 +1,299 @@
+body{
+    --bg:rgb(212 212 212);
+    background: var(--bg);
+    padding:0;
+    margin:0;
+    font-family:'poppins','roboto','railway',arial,helvetica,sans-serif;
+    font-size:1.25rem;
+    color:#222;
+}
+
+body * {
+    box-sizing: border-box;
+}
+
+.container{
+    height:auto;
+    min-height:100vh;
+    width:80%;
+    padding:1rem;
+    margin:0 auto;
+
+}
+.switches {
+    position:fixed;
+    left:0;
+    padding:1rem;
+}
+main {
+    display:grid;
+    gap:1rem;
+}
+h1 {
+    font-family: 'Comfortaa';
+    color: #222;
+    text-align: center;
+    -webkit-text-stroke-color: #222;
+    font-size: 3rem;
+    line-height:1;
+    -webkit-text-stroke-width: 1px;
+    stroke-linecap: square;
+}
+
+:has(input#switch1:checked)  h1{
+  color:#fff;
+  -webkit-text-stroke: 0;
+  font-size:5em;
+}
+:has(input#switch2:checked)  h1:first-letter{
+   color:red;
+}
+
+section{
+    display:grid;
+
+}
+section:first-of-type {
+    grid-template-columns: 1fr ;
+    gap:1rem;
+}
+
+
+section:nth-of-type(2) {
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:1rem;
+}
+article {
+    background:#fff;
+    height:auto;
+    overflow:hidden;
+    container-name:sect !important;
+    container-type:inline-size !important;
+  
+}
+section:nth-of-type(2) article{
+    min-height:30rem
+}
+section:nth-of-type(3) {
+    min-height:30rem;
+    display:grid;
+    gap:1rem;
+    grid-template-columns: repeat(4,1fr);
+   
+}
+section:nth-of-type(4) {
+    display:grid;
+    grid-template-columns: repeat(8,1fr);
+    gap:1rem;
+}
+label {
+    display: flex;
+    flex-wrap:wrap;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background:#fff;
+    position: relative;
+    justify-content: center;
+    height: 220px;
+    align-items: end;
+}
+label > p {
+    width:100%;
+    text-align:center;
+}
+input[type="checkbox"]{
+    position:absolute;
+    top:6rem;
+   
+    width:20px;
+    height:20px;
+    display:block;
+    appearance:none;
+    border-style:solid;
+    border-radius:15px;
+    width:50px;
+    cursor:pointer;
+    transition:all ease-in-out .24s;
+}
+input{
+    background:red;
+    color:red;
+}
+input:checked{
+    color:#ccc;
+    background:#ccc;
+    z-index:1;
+}
+input:before{
+    content:"";
+    background-color:yellow;
+    width:30px;
+    height:30px;
+    margin-left:-5px;
+    position: absolute;
+    border-radius:50%;
+    transform:translateY(-7px);
+    z-index:1;
+    transition:all ease-in-out .24s;
+}
+input:checked:before{
+    background:red;
+    margin-left:calc(100% - 25px);
+}
+input:checked ~ .twilight{
+    opacity:1;
+}
+input[type="checkbox"]:hover{
+    cursor:pointer;
+}
+article {
+    padding:0rem;
+    font-size:1rem;
+    transition:0.2s ease-in-out;
+}
+article > div {
+    width:100%;
+    height:100%;
+    padding:5rem;
+}
+article h2{
+    color: red;
+    font-weight:normal;
+    font-size:3em;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    white-space:wrap;
+    display:-webkit-inline-box;
+    text-overflow: ellipsis;
+    height:auto;
+    max-height:160px;
+    overflow:hidden;
+    transition:all 0.5s;
+}
+article p{
+    font-size:1.25em;
+}
+
+@container sect (min-width:1150px) {
+    :has(input#switch1:checked)  article  > div {
+        background:brown
+    }
+    :has(input#switch1:checked)  article > div p{
+     
+        color:#fff;
+    
+    }
+    :has(input#switch2:checked)  article > div h2{
+        color:lightblue;
+    
+    }
+    :has(input#switch2:checked)  article:nth-child(even) > div{
+        background:orangered;
+    }
+}
+@container sect (max-width:1150px) {
+    article > div{
+        padding:3rem;
+    }
+    article h2 {
+        font-size:3rem;
+        color:#000;
+        
+    }
+    article p {
+        color:#000;
+    }
+
+
+}
+@container sect (max-width:590px) {
+    article > div{
+        padding:1.5rem;
+    }
+    article h2 {
+        font-size:1.5rem;
+        font-weight:900;
+        color:hotpink;
+        
+    }
+    article p {
+        font-weight:500;
+        color:#c00;
+    }
+}
+@container sect (max-width:280px) {
+    article > div{
+        padding:1.5rem;
+        background:#f5f5f5;
+    }
+    article h2 {
+        font-size:1.5rem;
+        font-weight:900;
+        color:red;
+        
+    }
+    article p {
+        font-weight:500;
+        color:royalblue;
+    }
+    :has(input#switch1:checked)  article:nth-of-type(odd) > div{
+        background:darkgreen;
+    
+    }
+    :has(input#switch1:checked)  article:nth-of-type(odd) > div p{
+     
+        color:#fff;
+    
+    }
+    :has(input#switch2:checked)  article:nth-child(even) > div{
+        background:orangered;
+    }
+    :has(input#switch2:checked)  article:nth-child(even) > div h2{
+        color:#fff;
+        font-weight:600;
+    }
+    :has(input#switch2:checked)  article:nth-child(even) > div p{
+        color:#fff;
+        font-weight:600;
+    }
+
+}
+@container sect (max-width:270px) {
+    article > div{
+        padding:0.75rem;
+        background:#f5f5f5;
+
+    }
+    article h2 {
+        font-size:1rem;
+        font-weight:900;
+        color:red;
+        
+    }
+    article p {
+        font-size:0.875rem;
+        font-weight:500;
+        color:royalblue;
+    }
+    :has(input#switch1:checked)  article:nth-of-type(odd) > div{
+        background:darkblue;
+    
+    }
+    :has(input#switch2:checked)  article:nth-child(even) > div{
+        background:turquoise;
+    }
+    :has(input#switch2:checked)  article:nth-child(even) > div p{
+        color:#000;
+    }
+    :has(input#switch2:checked)  article:nth-child(even) > div h2{
+        color:#222;
+        font-weight:600;
+    }
+}
+
+
+* {
+    transition:all 0.4s ease-in;
+}
